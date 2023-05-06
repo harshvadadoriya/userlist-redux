@@ -1,23 +1,9 @@
 import React, { useState } from 'react';
 import Active from '../assets/lock-1.svg';
 import Lock from '../assets/trash-1.svg';
-import userRecord from './userRecord.json';
+import userRecord from './UserRecord.json';
 import HoveredUserDetails from './HoveredUserDetails';
-
-export interface User {
-	id: string;
-	first_name: string;
-	last_name: string;
-	email: string;
-	avatar: string;
-	active: boolean;
-	owner: boolean;
-	role: string;
-	plan: string;
-	clicks_reviewed: string;
-	monthly_click: string;
-	progress_percentage: number;
-}
+import { User } from '../interface/User';
 
 const UserList = (): JSX.Element => {
 	const [hoveredUser, setHoveredUser] = useState<User | null>(null);

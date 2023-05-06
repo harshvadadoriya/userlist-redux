@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Active from '../assets/lock-1.svg';
 import Lock from '../assets/trash-1.svg';
-import userRecord from './UserRecord.json';
 import HoveredUserDetails from './HoveredUserDetails';
 import { User } from '../interface/User';
+import { useDispatch, useSelector } from 'react-redux';
 
 const UserList = (): JSX.Element => {
 	const [hoveredUser, setHoveredUser] = useState<User | null>(null);
 
+	const users = useSelector((state: any) => state.data.users);
 	return (
 		<>
 			<div className="bg-white flex justify-center">
@@ -21,7 +22,7 @@ const UserList = (): JSX.Element => {
 								<th className="text-left text-lg p-4 font-bold"></th>
 							</tr>
 						</thead>
-						{userRecord.map((user: User) => (
+						{users.map((user: User) => (
 							<tbody key={user.id}>
 								<tr>
 									<td
@@ -80,14 +81,10 @@ const UserList = (): JSX.Element => {
 											<img
 												className="cursor-pointer"
 												src={Active}
-												alt={user.first_name}
+												alt="Active"
 											/>
 										) : (
-											<img
-												className="cursor-pointer"
-												src={Lock}
-												alt={user.first_name}
-											/>
+											<img className="cursor-pointer" src={Lock} alt="Lock" />
 										)}
 									</td>
 								</tr>

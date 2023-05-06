@@ -144,24 +144,6 @@
 		"v": 0
 	},
 	{
-		"id": "641c3418f5dda8782f30a537",
-		"first_name": "Janet",
-		"last_name": "Weaver",
-		"email": "janet.weaver@reqres.in",
-		"avatar": "https://reqres.in/img/faces/2-image.jpg",
-		"active": false,
-		"owner": false,
-		"role": "Manager",
-		"plan": "Basic",
-		"clicks_reviewed": "3348",
-		"monthly_click": "4282",
-		"progress_percentage": 68,
-		"removable": "true",
-		"createdAt": "2023-03-23T11:12:24.431Z",
-		"updatedAt": "2023-03-23T11:12:24.431Z",
-		"v": 0
-	},
-	{
 		"id": "641c343396fa5e79e465e497",
 		"first_name": "Charles",
 		"last_name": "Morris",

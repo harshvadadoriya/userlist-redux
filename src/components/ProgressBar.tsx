@@ -4,10 +4,10 @@ interface ProgressBarProp {
 
 const ProgressBar = ({ progressPercentage }: ProgressBarProp): JSX.Element => {
 	return (
-		<div className="h-[5px] mt-2 w-full bg-gray-300">
+		<div className="w-full mt-2 h-[5px] bg-orange-100 rounded-full">
 			<div
 				style={{ width: `${progressPercentage}%` }}
-				className={`h-full ${progressPercentage} bg-custom-orange`}
+				className={`h-full text-center text-xs text-white bg-custom-orange rounded-full ${progressPercentage}`}
 			></div>
 		</div>
 	);

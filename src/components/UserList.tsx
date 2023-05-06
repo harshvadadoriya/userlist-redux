@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Active from '../assets/lock.svg';
-import Lock from '../assets/trash.svg';
+import Active from '../assets/lock-1.svg';
+import Lock from '../assets/trash-1.svg';
 import userRecord from './userRecord.json';
 import HoveredUserDetails from './HoveredUserDetails';
 
@@ -16,6 +16,7 @@ export interface User {
 	plan: string;
 	clicks_reviewed: string;
 	monthly_click: string;
+	progress_percentage: number;
 }
 
 const UserList = (): JSX.Element => {

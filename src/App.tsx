@@ -1,4 +1,4 @@
-import UserList from './components/USerList';
+import UserList from './components/UserList';
 
 const App = (): JSX.Element => {
 	return (

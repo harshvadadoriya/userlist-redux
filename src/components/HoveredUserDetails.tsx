@@ -1,5 +1,5 @@
 import ProgressBar from './ProgressBar';
-import { User } from './USerList';
+import { User } from './UserList';
 
 interface Props {
 	hoveredUser: User;
@@ -15,6 +15,7 @@ const HoveredUserDetails = ({ hoveredUser }: Props): JSX.Element => {
 		plan,
 		clicks_reviewed,
 		monthly_click,
+		progress_percentage,
 	} = hoveredUser;
 
 	return (
@@ -54,7 +55,7 @@ const HoveredUserDetails = ({ hoveredUser }: Props): JSX.Element => {
 				</div>
 				<div className="mt-5 w-[250px] flex-col justify-start">
 					<h4 className="text-xl font-bold text-navy-700">Plan Uses</h4>
-					<ProgressBar progressPercentage={80} />
+					<ProgressBar progressPercentage={progress_percentage} />
 				</div>
 				<div className="mt-4 flex justify-center w-[250px] divide-gray-200 divide-x-[3px]">
 					<div className="text-left flex-1">

@@ -1,5 +1,4 @@
 import { HoverUserState } from '../redux/HoverUserSlice/HoverUserSlice';
-import ProgressBar from './ProgressBar';
 import { useSelector } from 'react-redux';
 
 const HoveredUserDetails = (): JSX.Element => {
@@ -55,7 +54,13 @@ const HoveredUserDetails = (): JSX.Element => {
 					</div>
 					<div className="mt-5 w-[250px] flex-col justify-start">
 						<h4 className="text-xl font-bold text-navy-700">Plan Uses</h4>
-						<ProgressBar progressPercentage={hoveredUser.progress_percentage} />
+						{/* <ProgressBar progressPercentage={hoveredUser.progress_percentage} /> */}
+						<div className="w-full mt-2 h-[5px] bg-orange-100 rounded-full">
+							<div
+								style={{ width: `${hoveredUser.progress_percentage}%` }}
+								className={`h-full text-center text-xs text-white bg-custom-orange rounded-full ${hoveredUser.progress_percentage}`}
+							></div>
+						</div>
 					</div>
 					<div className="mt-4 flex justify-center w-[250px] divide-gray-200 divide-x-[3px]">
 						<div className="text-left flex-1">

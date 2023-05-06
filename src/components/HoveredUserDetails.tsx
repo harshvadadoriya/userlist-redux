@@ -1,5 +1,5 @@
 import ProgressBar from './ProgressBar';
-import { User } from './UserList';
+import { User } from '../interface/User';
 
 interface Props {
 	hoveredUser: User;

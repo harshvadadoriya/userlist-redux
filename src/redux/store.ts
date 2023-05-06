@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import dataReducer from './userSlice';
+import userSlice from './UserSlice/userSlice';
+import HoverUserSlice from './HoverUserSlice/HoverUserSlice';
 
 export const store = configureStore({
 	reducer: {
-		data: dataReducer,
+		data: userSlice,
+		hoverData: HoverUserSlice,
 	},
 });

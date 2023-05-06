@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
 import Active from '../assets/lock-1.svg';
 import Lock from '../assets/trash-1.svg';
 import HoveredUserDetails from './HoveredUserDetails';
 import { User } from '../interface/User';
 import { useDispatch, useSelector } from 'react-redux';
+import { addUser, removeUser } from '../redux/HoverUserSlice/HoverUserSlice';
+import { UserState } from '../redux/UserSlice/userSlice';
 
 const UserList = (): JSX.Element => {
-	const [hoveredUser, setHoveredUser] = useState<User | null>(null);
-
-	const users = useSelector((state: any) => state.data.users);
+	const users = useSelector((state: { data: UserState }) => state.data.users);
+	const dispatch = useDispatch();
 	return (
 		<>
 			<div className="bg-white flex justify-center">
@@ -28,11 +28,9 @@ const UserList = (): JSX.Element => {
 									<td
 										className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap cursor-pointer"
 										key={user.id}
-										onMouseEnter={() => setHoveredUser(user)}
+										onMouseEnter={() => dispatch(addUser(user))}
 										onMouseLeave={() => {
-											if (hoveredUser === user) {
-												setHoveredUser(null);
-											}
+											dispatch(removeUser());
 										}}
 									>
 										<div className="flex items-center gap-x-2">
@@ -93,7 +91,7 @@ const UserList = (): JSX.Element => {
 					</table>
 				</div>
 				<div className="w-3/12 ">
-					{hoveredUser && <HoveredUserDetails hoveredUser={hoveredUser} />}
+					<HoveredUserDetails />
 				</div>
 			</div>
 		</>

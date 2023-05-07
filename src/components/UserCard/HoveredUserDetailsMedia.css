@@ -6,6 +6,6 @@
 
 @media (max-width: 600px) {
 	.fixed-card {
-		transform: translate(350px, 10px);
+		transform: translate(310px, 10px);
 	}
 }

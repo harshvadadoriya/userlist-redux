@@ -1,4 +1,4 @@
-import UserList from './components/UserList';
+import UserList from './components/UserList/UserList';
 import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 
 const environment = import.meta.env;

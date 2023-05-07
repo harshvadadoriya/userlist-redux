@@ -1,6 +1,6 @@
 import Active from '../assets/lock-1.svg';
 import Lock from '../assets/trash-1.svg';
-import HoveredUserDetails from './HoveredUserDetails';
+import HoveredUserDetails from './UserCard/HoveredUserDetails';
 import { User } from '../interface/User';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../redux/HoverUserSlice/HoverUserSlice';
@@ -12,7 +12,7 @@ const UserList = (): JSX.Element => {
 	return (
 		<>
 			<div className="bg-white flex justify-center">
-				<div className="w-full lg:w-5/12">
+				<div className="w-full lg:w-5/12 md:w-4/12">
 					<table className="table-auto w-full">
 						<thead>
 							<tr>
@@ -90,7 +90,7 @@ const UserList = (): JSX.Element => {
 						))}
 					</table>
 				</div>
-				<div className="w-4/12 ">
+				<div className="w-4/12">
 					<HoveredUserDetails />
 				</div>
 			</div>

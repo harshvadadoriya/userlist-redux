@@ -1,4 +1,11 @@
 import UserList from './components/UserList';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
+
+const environment = import.meta.env;
+
+if (environment.REACT_APP_NODE_DEV === 'production') {
+	disableReactDevTools();
+}
 
 const App = (): JSX.Element => {
 	return (

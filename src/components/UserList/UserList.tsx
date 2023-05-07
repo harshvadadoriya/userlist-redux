@@ -1,10 +1,11 @@
-import Active from '../assets/lock-1.svg';
-import Lock from '../assets/trash-1.svg';
-import HoveredUserDetails from './UserCard/HoveredUserDetails';
-import { User } from '../interface/User';
+import Active from '../../assets/lock-1.svg';
+import Lock from '../../assets/trash-1.svg';
+import HoveredUserDetails from '../UserCard/HoveredUserDetails';
+import { User } from '../../interface/User';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser, removeUser } from '../redux/HoverUserSlice/HoverUserSlice';
-import { UserState } from '../redux/UserSlice/userSlice';
+import { addUser, removeUser } from '../../redux/HoverUserSlice/HoverUserSlice';
+import { UserState } from '../../redux/UserSlice/userSlice';
+import Pagination from '../Pagination/Pagination';
 
 const UserList = (): JSX.Element => {
 	const users = useSelector((state: { data: UserState }) => state.data.users);
@@ -77,18 +78,23 @@ const UserList = (): JSX.Element => {
 									<td>
 										{user.active ? (
 											<img
-												className="cursor-pointer"
+												className="cursor-pointer ml-5"
 												src={Active}
 												alt="Active"
 											/>
 										) : (
-											<img className="cursor-pointer" src={Lock} alt="Lock" />
+											<img
+												className="cursor-pointer ml-5"
+												src={Lock}
+												alt="Lock"
+											/>
 										)}
 									</td>
 								</tr>
 							</tbody>
 						))}
 					</table>
+					<Pagination />
 				</div>
 				<div className="w-4/12">
 					<HoveredUserDetails />

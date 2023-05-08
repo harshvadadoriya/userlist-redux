@@ -1,15 +1,15 @@
-import Active from '../../assets/lock.svg';
-import Lock from '../../assets/trash.svg';
+import Active from '../../assets/lock-1.svg';
+import Lock from '../../assets/trash-1.svg';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
 import { addUser, removeUser } from '../../redux/HoverUserSlice/HoverUserSlice';
 import Pagination from '../Pagination/Pagination';
 import { useEffect } from 'react';
 import {
-	fetchUsers,
 	selectUsers,
 	selectStatus,
 	selectError,
 } from '../../redux/UserSlice/userSlice';
+import { fetchUsers } from '../../redux/UserSlice/userSlice';
 
 const UserList = (): JSX.Element => {
 	const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ const UserList = (): JSX.Element => {
 	}
 	return (
 		<>
-			<div className="w-full lg:w-5/12 md:w-4/12">
+			<div className="w-full overflow-x-hidden lg:w-5/12">
 				<table className="table-auto w-full">
 					<thead>
 						<tr>

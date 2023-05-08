@@ -1,10 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './UserSlice/userSlice';
-import HoverUserSlice from './HoverUserSlice/HoverUserSlice';
+import hoverUserSlice from './HoverUserSlice/HoverUserSlice';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 export const store = configureStore({
 	reducer: {
 		data: userSlice,
-		hoverData: HoverUserSlice,
+		hoverData: hoverUserSlice,
 	},
+	devTools: true,
 });
+
+// Getting the State type
+export type RootState = ReturnType<typeof store.getState>;
+// Getting the Dispatch type
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useAppDispatch: () => AppDispatch = useDispatch;

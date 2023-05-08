@@ -1,34 +1,52 @@
-import Active from '../../assets/lock-1.svg';
-import Lock from '../../assets/trash-1.svg';
-import HoveredUserDetails from '../UserCard/HoveredUserDetails';
-import { User } from '../../interface/User';
-import { useDispatch, useSelector } from 'react-redux';
+import Active from '../../assets/lock.svg';
+import Lock from '../../assets/trash.svg';
+import { useAppSelector, useAppDispatch } from '../../redux/store';
 import { addUser, removeUser } from '../../redux/HoverUserSlice/HoverUserSlice';
-import { UserState } from '../../redux/UserSlice/userSlice';
 import Pagination from '../Pagination/Pagination';
+import { useEffect } from 'react';
+import {
+	fetchUsers,
+	selectUsers,
+	selectStatus,
+	selectError,
+} from '../../redux/UserSlice/userSlice';
 
 const UserList = (): JSX.Element => {
-	const users = useSelector((state: { data: UserState }) => state.data.users);
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
+	const users = useAppSelector(selectUsers);
+	const status = useAppSelector(selectStatus);
+	const error = useAppSelector(selectError);
+
+	useEffect(() => {
+		dispatch(fetchUsers());
+	}, [dispatch]);
+
+	if (status === 'loading') {
+		return <div>Loading....</div>;
+	}
+
+	if (status === 'failed') {
+		return <div>Error: {error}</div>;
+	}
 	return (
 		<>
-			<div className="bg-white flex justify-center">
-				<div className="w-full lg:w-5/12 md:w-4/12">
-					<table className="table-auto w-full">
-						<thead>
-							<tr>
-								<th className="text-left text-lg p-4 font-bold">Name</th>
-								<th className="text-left text-lg p-4 font-bold">Status</th>
-								<th className="text-left text-lg p-4 font-bold">Access</th>
-								<th className="text-left text-lg p-4 font-bold"></th>
-							</tr>
-						</thead>
-						{users.map((user: User) => (
-							<tbody key={user.id}>
+			<div className="w-full lg:w-5/12 md:w-4/12">
+				<table className="table-auto w-full">
+					<thead>
+						<tr>
+							<th className="text-left text-lg p-4 font-bold">Name</th>
+							<th className="text-left text-lg p-4 font-bold">Status</th>
+							<th className="text-left text-lg p-4 font-bold">Access</th>
+							<th className="text-left text-lg p-4 font-bold"></th>
+						</tr>
+					</thead>
+					{users &&
+						users.map((user) => (
+							<tbody key={user._id}>
 								<tr>
 									<td
 										className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap cursor-pointer"
-										key={user.id}
+										key={user._id}
 										onMouseEnter={() => dispatch(addUser(user))}
 										onMouseLeave={() => {
 											dispatch(removeUser());
@@ -55,9 +73,20 @@ const UserList = (): JSX.Element => {
 											Active
 										</td>
 									) : (
-										<td className="p-4">
-											<div className="relative w-full lg:max-w-sm">
-												<select className="group w-[130px] p-2.5 inline-flex items-center bg-gray-50 text-base font-normal hover:text-gray-600 border rounded-md shadow-sm outline-none">
+										<td className="p-4 hover:text-gray-600">
+											<div className="relative w-[140px] flex items-center">
+												<svg
+													className="absolute w-5 h-5 right-5"
+													viewBox="0 0 20 20"
+													fill="currentColor"
+												>
+													<path
+														fillRule="evenodd"
+														d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+														clipRule="evenodd"
+													></path>
+												</svg>
+												<select className="group w-[130px] p-2.5 appearance-none inline-flex items-center bg-gray-50 text-base font-normal border rounded-md shadow-sm outline-none">
 													<option>Inactive</option>
 													<option>Active</option>
 												</select>
@@ -67,9 +96,20 @@ const UserList = (): JSX.Element => {
 									{user.owner ? (
 										<td className="p-4 font-medium">Owner</td>
 									) : (
-										<td className="p-4">
-											<div className="relative w-full lg:max-w-sm">
-												<select className="group w-[130px] p-2.5 inline-flex items-center bg-gray-50 text-base font-normal hover:text-gray-600 border rounded-md shadow-sm outline-none">
+										<td className="p-4 hover:text-gray-600">
+											<div className="relative w-[140px] flex items-center">
+												<svg
+													className="absolute w-5 h-5 right-5"
+													viewBox="0 0 20 20"
+													fill="currentColor"
+												>
+													<path
+														fillRule="evenodd"
+														d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+														clipRule="evenodd"
+													></path>
+												</svg>
+												<select className="group w-[130px] p-2.5 appearance-none inline-flex items-center bg-gray-50 text-base font-normal border rounded-md shadow-sm outline-none">
 													<option>{user.role}</option>
 												</select>
 											</div>
@@ -93,12 +133,8 @@ const UserList = (): JSX.Element => {
 								</tr>
 							</tbody>
 						))}
-					</table>
-					<Pagination />
-				</div>
-				<div className="w-4/12">
-					<HoveredUserDetails />
-				</div>
+				</table>
+				<Pagination />
 			</div>
 		</>
 	);

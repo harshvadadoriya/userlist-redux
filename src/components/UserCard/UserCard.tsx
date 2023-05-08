@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import { HoverUserState } from '../../redux/HoverUserSlice/HoverUserSlice';
-import './HoveredUserDetailsMedia.css';
+import './UserCardMedia.css';
 
-const HoveredUserDetails = (): JSX.Element => {
+const UserCard = (): JSX.Element => {
 	const hoveredUser = useSelector(
 		(state: { hoverData: HoverUserState }) => state.hoverData.hoveredUser
 	);
@@ -86,4 +86,4 @@ const HoveredUserDetails = (): JSX.Element => {
 	);
 };
 
-export default HoveredUserDetails;
+export default UserCard;

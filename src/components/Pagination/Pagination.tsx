@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Pagination = () => {
+const Pagination = (): JSX.Element => {
 	return (
 		<>
-			<div className="w-full flex justify-between items-center mb-10 border-t-2 border-indigo-100 ">
-				<div className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer ">
+			<div className="flex justify-between items-center my-3 border-t-2 border-indigo-100 ">
+				<div className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
 					<svg
 						width="14"
 						height="8"
@@ -34,36 +34,28 @@ const Pagination = () => {
 							strokeLinejoin="round"
 						/>
 					</svg>
-					<p className="text-sm ml-3 font-medium leading-none ">Previous</p>
+					<button className="text-sm ml-3 font-medium leading-none">
+						Previous
+					</button>
 				</div>
 				<div className="sm:flex">
-					<p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
+					<button className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
 						1
-					</p>
-					<p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
+					</button>
+					<button className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
 						2
-					</p>
-					<p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
+					</button>
+					<button className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
 						3
-					</p>
-					<p className="text-sm font-medium leading-none cursor-pointer text-indigo-700 border-t border-indigo-400 pt-3 mr-4 px-2">
+					</button>
+					<button className="text-sm font-medium leading-none cursor-pointer text-indigo-700 border-t border-indigo-400 pt-3 mr-4 px-2">
 						4
-					</p>
-					<p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-						5
-					</p>
-					<p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-						6
-					</p>
-					<p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-						7
-					</p>
-					<p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-						8
-					</p>
+					</button>
 				</div>
 				<div className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
-					<p className="text-sm font-medium leading-none mr-3">Next</p>
+					<button className="text-sm font-medium leading-none mr-3">
+						Next
+					</button>
 					<svg
 						width="14"
 						height="8"

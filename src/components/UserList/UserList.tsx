@@ -1,36 +1,50 @@
-import Active from '../../assets/lock-1.svg';
-import Lock from '../../assets/trash-1.svg';
+import Active from '../../assets/lock.svg';
+import Lock from '../../assets/trash.svg';
 import { useAppSelector, useAppDispatch } from '../../redux/store';
 import { addUser, removeUser } from '../../redux/HoverUserSlice/HoverUserSlice';
 import Pagination from '../Pagination/Pagination';
 import { useEffect } from 'react';
 import {
+	fetchUsers,
 	selectUsers,
+	selectCurrentPage,
 	selectStatus,
-	selectError,
 } from '../../redux/UserSlice/userSlice';
-import { fetchUsers } from '../../redux/UserSlice/userSlice';
+import PageNotFoundImg from '/public/page-not-found.gif';
 
 const UserList = (): JSX.Element => {
 	const dispatch = useAppDispatch();
 	const users = useAppSelector(selectUsers);
 	const status = useAppSelector(selectStatus);
-	const error = useAppSelector(selectError);
+	const currentPage = useAppSelector(selectCurrentPage);
 
 	useEffect(() => {
-		dispatch(fetchUsers());
-	}, [dispatch]);
+		dispatch(fetchUsers(currentPage));
+	}, [dispatch, currentPage]);
 
 	if (status === 'loading') {
-		return <div>Loading....</div>;
+		return (
+			<div className="flex items-center justify-center h-screen">
+				Loading...
+			</div>
+		);
 	}
 
 	if (status === 'failed') {
-		return <div>Error: {error}</div>;
+		return (
+			<div className="flex items-center justify-center h-screen">
+				<img
+					className="object-cover h-48 w-96"
+					src={PageNotFoundImg}
+					alt="Page Not Found"
+				/>
+			</div>
+		);
 	}
+
 	return (
 		<>
-			<div className="w-full overflow-x-hidden lg:w-5/12">
+			<div className="w-full lg:w-5/12">
 				<table className="table-auto w-full">
 					<thead>
 						<tr>
@@ -43,7 +57,7 @@ const UserList = (): JSX.Element => {
 					{users &&
 						users.map((user) => (
 							<tbody key={user._id}>
-								<tr>
+								<tr className="hover:bg-slate-50">
 									<td
 										className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap cursor-pointer"
 										key={user._id}

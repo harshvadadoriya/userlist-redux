@@ -1,11 +1,8 @@
-import { useSelector } from 'react-redux';
-import { HoverUserState } from '../../redux/HoverUserSlice/HoverUserSlice';
+import { useAppSelector } from '../../redux/store';
 import './UserCardMedia.css';
 
 const UserCard = (): JSX.Element => {
-	const hoveredUser = useSelector(
-		(state: { hoverData: HoverUserState }) => state.hoverData.hoveredUser
-	);
+	const hoveredUser = useAppSelector((state) => state.hoverData.hoveredUser);
 
 	// if hoverData is null then show nothing
 	if (!hoveredUser) {

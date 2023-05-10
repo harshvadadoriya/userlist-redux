@@ -9,8 +9,9 @@ import {
 	selectUsers,
 	selectCurrentPage,
 	selectStatus,
-} from '../../redux/UserSlice/userSlice';
-import PageNotFoundImg from '/public/page-not-found.gif';
+} from '../../redux/UserSlice/UserSlice';
+import PageNotFoundImg from '../../assets/page-not-found.gif';
+import Skeleton from '../Skeleton/Skeleton';
 
 const UserList = (): JSX.Element => {
 	const dispatch = useAppDispatch();
@@ -24,8 +25,8 @@ const UserList = (): JSX.Element => {
 
 	if (status === 'loading') {
 		return (
-			<div className="flex items-center justify-center h-screen">
-				Loading...
+			<div className="w-full lg:w-5/12">
+				<Skeleton />
 			</div>
 		);
 	}

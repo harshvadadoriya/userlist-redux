@@ -33,7 +33,7 @@ const Pagination = (): JSX.Element => {
 					}
 					breakClassName={'hover:text-indigo-700'}
 					activeClassName={
-						'text-sm font-medium leading-none cursor-pointer text-indigo-700 border-t border-indigo-700 pt-2'
+						'activeClass text-sm font-medium leading-none cursor-pointer text-indigo-700 border-t border-indigo-700 pt-2'
 					}
 					previousClassName={
 						'text-sm text-indigo-700  font-medium leading-none pt-2 px-2'
@@ -41,7 +41,7 @@ const Pagination = (): JSX.Element => {
 					nextClassName={
 						'text-sm text-indigo-700 font-medium leading-none pt-2 px-2'
 					}
-					disabledClassName={'text-gray-400 pointer-events-none'}
+					disabledClassName={'disabledClass pointer-events-none'}
 				/>
 			</div>
 		</>
